@@ -78,10 +78,6 @@ public class AccountHandler {
         return this.accounts.get(index);
     }
 
-    private int getMaxInt() {
-        return Integer.MAX_VALUE;
-    }
-
     public boolean loadAccount(Account account) throws InterruptedException {
         if (account == null)
             System.out.println("Account is null");

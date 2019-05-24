@@ -15,6 +15,7 @@ import net.miginfocom.swing.*;
  * @author unknown
  */
 public class MainWindow extends JFrame {
+    public static MainWindow mainWindow = null;
     public MainWindow() {
         initComponents();
     }
@@ -99,6 +100,18 @@ public class MainWindow extends JFrame {
         addAccountDialog.setVisible(false);
     }
 
+    private void editAccountActionPerformed(ActionEvent e) {
+        editAccountDialog.setVisible(true);
+    }
+
+    private void button2ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void cancelEditActionPerformed(ActionEvent e) {
+        editAccountDialog.setVisible(false);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - my man
@@ -119,7 +132,7 @@ public class MainWindow extends JFrame {
         loadCheat = new JButton();
         addAccount = new JButton();
         button1 = new JButton();
-        button2 = new JButton();
+        editAccount = new JButton();
         settingsDialog = new JDialog();
         checkBox1 = new JCheckBox();
         saveSettingsButton = new JButton();
@@ -148,6 +161,25 @@ public class MainWindow extends JFrame {
         label6 = new JLabel();
         textField2 = new JTextField();
         deleteField = new JButton();
+        editAccountDialog = new JDialog();
+        currentAccountName = new JTextField();
+        label7 = new JLabel();
+        label8 = new JLabel();
+        currentSteamName = new JTextField();
+        label9 = new JLabel();
+        currentSteamPassword = new JTextField();
+        cancelEdit = new JButton();
+        setEdit = new JButton();
+        newAccountName = new JTextField();
+        newSteamName = new JTextField();
+        newSteamPassword = new JTextField();
+        label10 = new JLabel();
+        label11 = new JLabel();
+        label12 = new JLabel();
+        keepAccountName = new JCheckBox();
+        keepSteamName = new JCheckBox();
+        keepSteamPassword = new JCheckBox();
+        label13 = new JLabel();
 
         //======== this ========
         setTitle("Steam Account Manager");
@@ -259,10 +291,14 @@ public class MainWindow extends JFrame {
             mainPanel.add(button1);
             button1.setBounds(5, 55, 130, 25);
 
-            //---- button2 ----
-            button2.setText("Edit Account");
-            mainPanel.add(button2);
-            button2.setBounds(5, 80, 130, 25);
+            //---- editAccount ----
+            editAccount.setText("Edit Account");
+            editAccount.addActionListener(e -> {
+			button2ActionPerformed(e);
+			editAccountActionPerformed(e);
+		});
+            mainPanel.add(editAccount);
+            editAccount.setBounds(5, 80, 130, 25);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -322,7 +358,6 @@ public class MainWindow extends JFrame {
 
             //---- debugOptions ----
             debugOptions.setText("Debug Options");
-            debugOptions.setEnabled(false);
             debugOptions.addChangeListener(e -> debugOptionsStateChanged(e));
             settingsDialogContentPane.add(debugOptions);
             debugOptions.setBounds(new Rectangle(new Point(170, 175), debugOptions.getPreferredSize()));
@@ -448,6 +483,84 @@ public class MainWindow extends JFrame {
             addAccountDialog.pack();
             addAccountDialog.setLocationRelativeTo(addAccountDialog.getOwner());
         }
+
+        //======== editAccountDialog ========
+        {
+            editAccountDialog.setTitle("Edit Account");
+            Container editAccountDialogContentPane = editAccountDialog.getContentPane();
+            editAccountDialogContentPane.setLayout(null);
+
+            //---- currentAccountName ----
+            currentAccountName.setEditable(false);
+            editAccountDialogContentPane.add(currentAccountName);
+            currentAccountName.setBounds(20, 30, 165, 40);
+
+            //---- label7 ----
+            label7.setText("Current Account Name");
+            editAccountDialogContentPane.add(label7);
+            label7.setBounds(new Rectangle(new Point(25, 15), label7.getPreferredSize()));
+
+            //---- label8 ----
+            label8.setText("Current Steam Username");
+            editAccountDialogContentPane.add(label8);
+            label8.setBounds(new Rectangle(new Point(25, 80), label8.getPreferredSize()));
+            editAccountDialogContentPane.add(currentSteamName);
+            currentSteamName.setBounds(20, 95, 165, 40);
+
+            //---- label9 ----
+            label9.setText("Current Steam Password");
+            editAccountDialogContentPane.add(label9);
+            label9.setBounds(new Rectangle(new Point(25, 145), label9.getPreferredSize()));
+            editAccountDialogContentPane.add(currentSteamPassword);
+            currentSteamPassword.setBounds(20, 160, 165, 40);
+
+            //---- cancelEdit ----
+            cancelEdit.setText("Cancel");
+            cancelEdit.addActionListener(e -> cancelEditActionPerformed(e));
+            editAccountDialogContentPane.add(cancelEdit);
+            cancelEdit.setBounds(110, 230, cancelEdit.getPreferredSize().width, 35);
+
+            //---- setEdit ----
+            setEdit.setText("Set");
+            editAccountDialogContentPane.add(setEdit);
+            setEdit.setBounds(25, 230, setEdit.getPreferredSize().width, 35);
+            editAccountDialogContentPane.add(newAccountName);
+            newAccountName.setBounds(210, 30, 165, 40);
+            editAccountDialogContentPane.add(newSteamName);
+            newSteamName.setBounds(210, 95, 165, 40);
+            editAccountDialogContentPane.add(newSteamPassword);
+            newSteamPassword.setBounds(210, 160, 165, 40);
+
+            //---- label10 ----
+            label10.setText("New Account Name");
+            editAccountDialogContentPane.add(label10);
+            label10.setBounds(new Rectangle(new Point(215, 15), label10.getPreferredSize()));
+
+            //---- label11 ----
+            label11.setText("New Steam Username");
+            editAccountDialogContentPane.add(label11);
+            label11.setBounds(new Rectangle(new Point(215, 80), label11.getPreferredSize()));
+
+            //---- label12 ----
+            label12.setText("New Steam Password");
+            editAccountDialogContentPane.add(label12);
+            label12.setBounds(new Rectangle(new Point(215, 145), label12.getPreferredSize()));
+            editAccountDialogContentPane.add(keepAccountName);
+            keepAccountName.setBounds(new Rectangle(new Point(385, 40), keepAccountName.getPreferredSize()));
+            editAccountDialogContentPane.add(keepSteamName);
+            keepSteamName.setBounds(385, 105, 18, 18);
+            editAccountDialogContentPane.add(keepSteamPassword);
+            keepSteamPassword.setBounds(385, 170, 18, 18);
+
+            //---- label13 ----
+            label13.setText("Keep");
+            editAccountDialogContentPane.add(label13);
+            label13.setBounds(new Rectangle(new Point(380, 10), label13.getPreferredSize()));
+
+            editAccountDialogContentPane.setPreferredSize(new Dimension(425, 315));
+            editAccountDialog.pack();
+            editAccountDialog.setLocationRelativeTo(editAccountDialog.getOwner());
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -470,7 +583,7 @@ public class MainWindow extends JFrame {
     private JButton loadCheat;
     private JButton addAccount;
     private JButton button1;
-    private JButton button2;
+    private JButton editAccount;
     private JDialog settingsDialog;
     private JCheckBox checkBox1;
     private JButton saveSettingsButton;
@@ -499,5 +612,24 @@ public class MainWindow extends JFrame {
     private JLabel label6;
     private JTextField textField2;
     private JButton deleteField;
+    private JDialog editAccountDialog;
+    private JTextField currentAccountName;
+    private JLabel label7;
+    private JLabel label8;
+    private JTextField currentSteamName;
+    private JLabel label9;
+    private JTextField currentSteamPassword;
+    private JButton cancelEdit;
+    private JButton setEdit;
+    private JTextField newAccountName;
+    private JTextField newSteamName;
+    private JTextField newSteamPassword;
+    private JLabel label10;
+    private JLabel label11;
+    private JLabel label12;
+    private JCheckBox keepAccountName;
+    private JCheckBox keepSteamName;
+    private JCheckBox keepSteamPassword;
+    private JLabel label13;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
