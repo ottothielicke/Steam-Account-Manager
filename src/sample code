@@ -1,0 +1,108 @@
+public final int WM_KEYDOWN = 0x0100;
+    public final int WM_CHAR = 0x0102;
+    public static final String text = "This is my username";
+    public static final int WM_LBUTTONDOWN = 0x0201;
+    public static final int MK_LBUTTON = 0x0001;
+    public static final int WM_IME_NOTIFY = 282;
+    public static final int IMN_SETCANDIDATEPOS = 9;
+    public static void main(String[] args)throws InterruptedException {
+        System.setProperty("jna.library.path", "C:\\Windows\\System32");
+        //Scanner scan = new Scanner(System.in);
+        // Scanner scan2 = new Scanner(scan.next());
+        System.out.print("input char");
+        //String input = scan2.next();
+        WinDef.HWND handle;
+        WinDef.HWND username;
+        WinDef.HWND password;
+        while (true) {
+            handle = User32.INSTANCE.FindWindow("vguiPopupWindow", "Steam Login");
+            if (handle != null)
+                break;
+        }
+        System.out.println("window found");
+        System.out.println(handle);
+        Scanner scan = new Scanner(System.in);
+        System.out.print("enter text for SendMessage: ");
+        String input = scan.nextLine();
+        WinDef.LPARAM lparam = new WinDef.LPARAM(240001);
+
+        int foregroundThreadID = User32.INSTANCE.GetWindowThreadProcessId(User32.INSTANCE.GetForegroundWindow(), null);
+        int steamThreadID = User32.INSTANCE.GetWindowThreadProcessId(handle, null);
+
+        WinDef.DWORD ftid = new WinDef.DWORD(foregroundThreadID);
+        WinDef.DWORD stid = new WinDef.DWORD(steamThreadID);
+        if (foregroundThreadID != steamThreadID) {
+            Thread.currentThread().sleep(10);
+            User32.INSTANCE.AttachThreadInput(ftid, stid, true);
+            Thread.currentThread().sleep(10);
+            User32.INSTANCE.SetForegroundWindow(handle);
+            Thread.currentThread().sleep(10);
+            User32.INSTANCE.AttachThreadInput(ftid, stid, false);
+            Thread.currentThread().sleep(10);
+        } else {
+            User32.INSTANCE.SetForegroundWindow(handle);
+        }
+
+        /*
+        WinUser.MOUSEINPUT changeToPassword = new WinUser.MOUSEINPUT();
+        changeToPassword.dx = new WinDef.LONG(255);
+        changeToPassword.dy = new WinDef.LONG(139);
+        changeToPassword.mouseData = new WinDef.DWORD(0x0001);
+        changeToPassword.dwFlags = new WinDef.DWORD(0x0002);
+        WinUser.INPUT[] inputArray = new WinUser.INPUT[1];
+        inputArray[0] = new WinUser.INPUT();
+        inputArray[0].input.mi = changeToPassword;
+        */
+        //System.out.println(User32.INSTANCE.SendInput(new WinDef.DWORD(1), inputArray, 68));
+        /*String input = "";
+        WinDef.WPARAM wparam = new WinDef.WPARAM('A');
+        Pointer pointer = new Pointer(0);
+        //pointer.setString(0x51, input);
+        //WinDef.LPARAM ok = new WinDef.LPARAM(pointer.getLong(0));
+        User32.INSTANCE.SendMessage(handle, 0x7, null, lparam);
+        User32.INSTANCE.SendMessage(handle, WinUser.WM_KEYDOWN, wparam, lparam);
+        User32.INSTANCE.SendMessage(handle, WinUser.WM_KEYUP, wparam, lparam);
+        User32.INSTANCE.SendMessage(handle, WinUser.WM_CHAR, wparam, lparam);
+        */
+
+        WinDef.WPARAM wparam = null;
+        for (int i = 0; i < input.length(); i++) {
+            wparam = new WinDef.WPARAM(input.charAt(i));
+            try {
+                Thread.currentThread().sleep(10);
+            } catch (InterruptedException e) {
+                System.out.print("error in sleep. stopping text");
+                break;
+            }
+            User32.INSTANCE.SendMessage(handle, WinUser.WM_CHAR, wparam, lparam);
+        }
+        Thread.currentThread().sleep(1000);
+        User32.INSTANCE.SendMessage(handle, WinUser.WM_KEYDOWN, new WinDef.WPARAM(9), new WinDef.LPARAM(0xF0001));
+        System.out.print("enter text for SendMessage: ");
+        input = scan.nextLine();
+        if (foregroundThreadID != steamThreadID) {
+            Thread.currentThread().sleep(10);
+            User32.INSTANCE.AttachThreadInput(ftid, stid, true);
+            Thread.currentThread().sleep(10);
+            User32.INSTANCE.SetForegroundWindow(handle);
+            Thread.currentThread().sleep(10);
+            User32.INSTANCE.AttachThreadInput(ftid, stid, false);
+            Thread.currentThread().sleep(10);
+        } else {
+            User32.INSTANCE.SetForegroundWindow(handle);
+        }
+        for (int i = 0; i < input.length(); i++) {
+            wparam = new WinDef.WPARAM(input.charAt(i));
+            try {
+                Thread.currentThread().sleep(10);
+            } catch (InterruptedException e) {
+                System.out.print("error in sleep. stopping text");
+                break;
+            }
+            User32.INSTANCE.SendMessage(handle, WinUser.WM_CHAR, wparam, lparam);
+
+            //WinDef.LPARAM lparamPos = new WinDef.LPARAM(0x008400B0);
+            //WinDef.WPARAM lButton = new WinDef.WPARAM(MK_LBUTTON);
+            //User32.INSTANCE.SendMessage(handle, WM_LBUTTONDOWN, lButton, lparamPos);
+        }
+    }

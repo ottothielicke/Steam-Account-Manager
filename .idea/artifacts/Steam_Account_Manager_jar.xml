@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Steam Account Manager:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Steam_Account_Manager_jar</output-path>
+    <root id="archive" name="Steam Account Manager.jar">
+      <element id="module-output" name="Steam Account Manager" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-core.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jna-5.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jna-platform-5.3.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
