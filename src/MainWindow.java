@@ -91,11 +91,22 @@ public class MainWindow extends JFrame {
 
     }
 
+    private void addAccountActionPerformed(ActionEvent e) {
+        addAccountDialog.setVisible(true);
+    }
+
+    private void cancelAddActionPerformed(ActionEvent e) {
+        addAccountDialog.setVisible(false);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - my man
         menuBar1 = new JMenuBar();
         file = new JMenu();
+        newAccountList = new JMenuItem();
+        save = new JMenuItem();
+        saveAs = new JMenuItem();
         settings = new JMenuItem();
         exit = new JMenuItem();
         consoleScrollPane = new JScrollPane();
@@ -121,6 +132,22 @@ public class MainWindow extends JFrame {
         causeException = new JButton();
         sopHelloWorld = new JButton();
         printFromTwoThreads = new JButton();
+        addAccountDialog = new JDialog();
+        add = new JButton();
+        cancelAdd = new JButton();
+        accountNameField = new JTextField();
+        usernameField = new JTextField();
+        passwordField = new JPasswordField();
+        label2 = new JLabel();
+        label3 = new JLabel();
+        label4 = new JLabel();
+        label5 = new JLabel();
+        scrollPane2 = new JScrollPane();
+        fieldTree = new JTree();
+        newField = new JButton();
+        label6 = new JLabel();
+        textField2 = new JTextField();
+        deleteField = new JButton();
 
         //======== this ========
         setTitle("Steam Account Manager");
@@ -134,6 +161,18 @@ public class MainWindow extends JFrame {
             //======== file ========
             {
                 file.setText("File");
+
+                //---- newAccountList ----
+                newAccountList.setText("New");
+                file.add(newAccountList);
+
+                //---- save ----
+                save.setText("Save");
+                file.add(save);
+
+                //---- saveAs ----
+                saveAs.setText("Save As...");
+                file.add(saveAs);
 
                 //---- settings ----
                 settings.setText("Settings");
@@ -188,11 +227,6 @@ public class MainWindow extends JFrame {
             {
 
                 //---- accountTree ----
-                accountTree.setModel(new DefaultTreeModel(
-                    new DefaultMutableTreeNode("Accounts Not Loaded") {
-                        {
-                        }
-                    }));
                 accountTree.setRootVisible(false);
                 scrollPane1.setViewportView(accountTree);
             }
@@ -213,6 +247,10 @@ public class MainWindow extends JFrame {
 
             //---- addAccount ----
             addAccount.setText("Add Account");
+            addAccount.addActionListener(e -> {
+			addAccountActionPerformed(e);
+			addAccountActionPerformed(e);
+		});
             mainPanel.add(addAccount);
             addAccount.setBounds(5, 30, 130, 25);
 
@@ -284,6 +322,7 @@ public class MainWindow extends JFrame {
 
             //---- debugOptions ----
             debugOptions.setText("Debug Options");
+            debugOptions.setEnabled(false);
             debugOptions.addChangeListener(e -> debugOptionsStateChanged(e));
             settingsDialogContentPane.add(debugOptions);
             debugOptions.setBounds(new Rectangle(new Point(170, 175), debugOptions.getPreferredSize()));
@@ -322,6 +361,93 @@ public class MainWindow extends JFrame {
             debugFrame.pack();
             debugFrame.setLocationRelativeTo(debugFrame.getOwner());
         }
+
+        //======== addAccountDialog ========
+        {
+            addAccountDialog.setAlwaysOnTop(true);
+            addAccountDialog.setTitle("Add Account");
+            addAccountDialog.setResizable(false);
+            Container addAccountDialogContentPane = addAccountDialog.getContentPane();
+            addAccountDialogContentPane.setLayout(null);
+
+            //---- add ----
+            add.setText("Add");
+            addAccountDialogContentPane.add(add);
+            add.setBounds(20, 260, add.getPreferredSize().width, 35);
+
+            //---- cancelAdd ----
+            cancelAdd.setText("Cancel");
+            cancelAdd.addActionListener(e -> cancelAddActionPerformed(e));
+            addAccountDialogContentPane.add(cancelAdd);
+            cancelAdd.setBounds(105, 260, cancelAdd.getPreferredSize().width, 35);
+            addAccountDialogContentPane.add(accountNameField);
+            accountNameField.setBounds(20, 25, 165, 40);
+            addAccountDialogContentPane.add(usernameField);
+            usernameField.setBounds(20, 85, 165, 40);
+            addAccountDialogContentPane.add(passwordField);
+            passwordField.setBounds(20, 145, 165, 40);
+
+            //---- label2 ----
+            label2.setText("Account Name");
+            addAccountDialogContentPane.add(label2);
+            label2.setBounds(new Rectangle(new Point(25, 10), label2.getPreferredSize()));
+
+            //---- label3 ----
+            label3.setText("Steam Username");
+            addAccountDialogContentPane.add(label3);
+            label3.setBounds(new Rectangle(new Point(25, 70), label3.getPreferredSize()));
+
+            //---- label4 ----
+            label4.setText("Steam Password");
+            addAccountDialogContentPane.add(label4);
+            label4.setBounds(new Rectangle(new Point(25, 130), label4.getPreferredSize()));
+
+            //---- label5 ----
+            label5.setText("DISABLED");
+            label5.setForeground(Color.red);
+            addAccountDialogContentPane.add(label5);
+            label5.setBounds(new Rectangle(new Point(240, 10), label5.getPreferredSize()));
+
+            //======== scrollPane2 ========
+            {
+
+                //---- fieldTree ----
+                fieldTree.setModel(new DefaultTreeModel(
+                    new DefaultMutableTreeNode("(root)") {
+                        {
+                            add(new DefaultMutableTreeNode("This"));
+                            add(new DefaultMutableTreeNode("is"));
+                            add(new DefaultMutableTreeNode("a"));
+                            add(new DefaultMutableTreeNode("placeholder"));
+                        }
+                    }));
+                fieldTree.setRootVisible(false);
+                scrollPane2.setViewportView(fieldTree);
+            }
+            addAccountDialogContentPane.add(scrollPane2);
+            scrollPane2.setBounds(195, 30, 145, 175);
+
+            //---- newField ----
+            newField.setText("New Field");
+            addAccountDialogContentPane.add(newField);
+            newField.setBounds(195, 215, newField.getPreferredSize().width, 35);
+
+            //---- label6 ----
+            label6.setText("Field Data");
+            addAccountDialogContentPane.add(label6);
+            label6.setBounds(new Rectangle(new Point(25, 190), label6.getPreferredSize()));
+            addAccountDialogContentPane.add(textField2);
+            textField2.setBounds(20, 205, 165, 40);
+
+            //---- deleteField ----
+            deleteField.setText("Delete Field");
+            addAccountDialogContentPane.add(deleteField);
+            deleteField.setBounds(195, 260, deleteField.getPreferredSize().width, 35);
+
+            addAccountDialogContentPane.setPreferredSize(new Dimension(365, 340));
+            addAccountDialog.pack();
+            addAccountDialog.setLocationRelativeTo(addAccountDialog.getOwner());
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -329,6 +455,9 @@ public class MainWindow extends JFrame {
     // Generated using JFormDesigner Evaluation license - my man
     private JMenuBar menuBar1;
     private JMenu file;
+    private JMenuItem newAccountList;
+    private JMenuItem save;
+    private JMenuItem saveAs;
     private JMenuItem settings;
     private JMenuItem exit;
     private JScrollPane consoleScrollPane;
@@ -354,6 +483,21 @@ public class MainWindow extends JFrame {
     private JButton causeException;
     private JButton sopHelloWorld;
     private JButton printFromTwoThreads;
-
+    private JDialog addAccountDialog;
+    private JButton add;
+    private JButton cancelAdd;
+    private JTextField accountNameField;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JScrollPane scrollPane2;
+    private JTree fieldTree;
+    private JButton newField;
+    private JLabel label6;
+    private JTextField textField2;
+    private JButton deleteField;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
