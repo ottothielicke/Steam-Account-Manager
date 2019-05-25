@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.plaf.*;
@@ -63,9 +64,12 @@ public class MainWindow extends JFrame {
     }
 
     public void setTreeModel(DefaultTreeModel treeModel){
+        this.treeModel = treeModel;
         accountTree.setModel(treeModel);
         accountTree.repaint();
     }
+
+    public DefaultTreeModel getTreeModel(){ return this.treeModel;}
 
     private void importAccountsActionPerformed(ActionEvent e) {
         Main.getAccountHandler().load();
@@ -102,6 +106,20 @@ public class MainWindow extends JFrame {
 
     private void editAccountActionPerformed(ActionEvent e) {
         editAccountDialog.setVisible(true);
+        try {
+            if (((DefaultMutableTreeNode) accountTree.getSelectionModel().getLeadSelectionPath().getLastPathComponent()).getUserObject() instanceof Account) {
+                Account currentAccount = (Account) ((DefaultMutableTreeNode) accountTree.getSelectionModel().getLeadSelectionPath().getLastPathComponent()).getUserObject();
+                this.selectedAccount = currentAccount;
+                currentAccountName.setText(currentAccount.getUsername());
+                currentSteamName.setText(currentAccount.getSteamname());
+                currentSteamPassword.setText(currentAccount.getPassword());
+                editAccountDialog.repaint();
+            }
+        }
+        catch(NullPointerException e1){
+
+        }
+
     }
 
     private void button2ActionPerformed(ActionEvent e) {
@@ -110,6 +128,101 @@ public class MainWindow extends JFrame {
 
     private void cancelEditActionPerformed(ActionEvent e) {
         editAccountDialog.setVisible(false);
+    }
+
+    private void addActionPerformed(ActionEvent e) {
+        String accountName = this.accountNameField.getText();
+        String steamName = this.usernameField.getText();
+        String password = String.copyValueOf(this.passwordField.getPassword());
+        Account newAccount = new Account(steamName, password, accountName);
+        if(newAccount.isValid()) {
+            Main.getAccountHandler().addAccount(newAccount);
+            this.addAccountDialog.setVisible(false);
+        }
+    }
+
+    private void accountTreePropertyChange(PropertyChangeEvent e) {
+        try {
+            if(((DefaultMutableTreeNode)accountTree.getSelectionModel().getLeadSelectionPath().getLastPathComponent()).getUserObject() instanceof Account){
+                Account currentAccount = (Account)((DefaultMutableTreeNode)accountTree.getSelectionModel().getLeadSelectionPath().getLastPathComponent()).getUserObject();
+                this.selectedAccount = currentAccount;
+                currentAccountName.setText(currentAccount.getUsername());
+                currentSteamName.setText(currentAccount.getSteamname());
+                currentSteamPassword.setText(currentAccount.getPassword());
+                if(keepAccountName.isSelected()){
+                    newAccountName.setEditable(false);
+                    newAccountName.setText(currentAccountName.getText());
+                }
+                else{
+                    newAccountName.setEditable(true);
+                    newAccountName.setText("");
+                }
+                if(keepAccountName.isSelected()){
+                    newAccountName.setEditable(false);
+                    newAccountName.setText(currentAccountName.getText());
+                }
+                else{
+                    newAccountName.setEditable(true);
+                    newAccountName.setText("");
+                }
+                if(keepSteamName.isSelected()){
+                    newSteamName.setEditable(false);
+                    newSteamName.setText(currentSteamName.getText());
+                }
+                else{
+                    newSteamName.setEditable(true);
+                    newSteamName.setText("");
+                }
+                editAccountDialog.repaint();
+            }
+        }
+        catch(NullPointerException e1){
+
+        }
+    }
+
+    private void keepAccountNameItemStateChanged(ItemEvent e) {
+        if(keepAccountName.isSelected()){
+            newAccountName.setEditable(false);
+            newAccountName.setText(currentAccountName.getText());
+        }
+        else{
+            newAccountName.setEditable(true);
+            newAccountName.setText("");
+        }
+    }
+
+    private void keepSteamNameItemStateChanged(ItemEvent e) {
+        if(keepSteamName.isSelected()){
+            newSteamName.setEditable(false);
+            newSteamName.setText(currentSteamName.getText());
+        }
+        else{
+            newSteamName.setEditable(true);
+            newSteamName.setText("");
+        }
+    }
+
+    private void keepSteamPasswordItemStateChanged(ItemEvent e) {
+        if(keepSteamPassword.isSelected()){
+            newSteamPassword.setEditable(false);
+            newSteamPassword.setText(currentSteamPassword.getText());
+        }
+        else{
+            newSteamPassword.setEditable(true);
+            newSteamPassword.setText("");
+        }
+    }
+
+    private void setEditActionPerformed(ActionEvent e) {
+        editAccountDialog.setVisible(false);
+        if(!keepAccountName.isSelected())
+            selectedAccount.setUsername(newAccountName.getText());
+        if(!keepSteamName.isSelected())
+            selectedAccount.setSteamname(newSteamName.getText());
+        if(!keepSteamPassword.isSelected())
+            selectedAccount.setPassword(newSteamPassword.getText());
+        this.accountTree.repaint();
     }
 
     private void initComponents() {
@@ -145,6 +258,7 @@ public class MainWindow extends JFrame {
         causeException = new JButton();
         sopHelloWorld = new JButton();
         printFromTwoThreads = new JButton();
+        label14 = new JLabel();
         addAccountDialog = new JDialog();
         add = new JButton();
         cancelAdd = new JButton();
@@ -260,6 +374,15 @@ public class MainWindow extends JFrame {
 
                 //---- accountTree ----
                 accountTree.setRootVisible(false);
+                accountTree.setModel(new DefaultTreeModel(
+                    new DefaultMutableTreeNode("(root)") {
+                        {
+                            add(new DefaultMutableTreeNode("No"));
+                            add(new DefaultMutableTreeNode("Accounts"));
+                            add(new DefaultMutableTreeNode("Loaded"));
+                        }
+                    }));
+                accountTree.addPropertyChangeListener(e -> accountTreePropertyChange(e));
                 scrollPane1.setViewportView(accountTree);
             }
             mainPanel.add(scrollPane1);
@@ -295,6 +418,7 @@ public class MainWindow extends JFrame {
             editAccount.setText("Edit Account");
             editAccount.addActionListener(e -> {
 			button2ActionPerformed(e);
+			editAccountActionPerformed(e);
 			editAccountActionPerformed(e);
 		});
             mainPanel.add(editAccount);
@@ -392,6 +516,11 @@ public class MainWindow extends JFrame {
             debugFrameContentPane.add(printFromTwoThreads);
             printFromTwoThreads.setBounds(new Rectangle(new Point(25, 55), printFromTwoThreads.getPreferredSize()));
 
+            //---- label14 ----
+            label14.setText("yaw = yaw");
+            debugFrameContentPane.add(label14);
+            label14.setBounds(new Rectangle(new Point(40, 105), label14.getPreferredSize()));
+
             debugFrameContentPane.setPreferredSize(new Dimension(435, 275));
             debugFrame.pack();
             debugFrame.setLocationRelativeTo(debugFrame.getOwner());
@@ -407,6 +536,7 @@ public class MainWindow extends JFrame {
 
             //---- add ----
             add.setText("Add");
+            add.addActionListener(e -> addActionPerformed(e));
             addAccountDialogContentPane.add(add);
             add.setBounds(20, 260, add.getPreferredSize().width, 35);
 
@@ -504,6 +634,10 @@ public class MainWindow extends JFrame {
             label8.setText("Current Steam Username");
             editAccountDialogContentPane.add(label8);
             label8.setBounds(new Rectangle(new Point(25, 80), label8.getPreferredSize()));
+
+            //---- currentSteamName ----
+            currentSteamName.setEditable(false);
+            currentSteamName.setBackground(null);
             editAccountDialogContentPane.add(currentSteamName);
             currentSteamName.setBounds(20, 95, 165, 40);
 
@@ -511,6 +645,9 @@ public class MainWindow extends JFrame {
             label9.setText("Current Steam Password");
             editAccountDialogContentPane.add(label9);
             label9.setBounds(new Rectangle(new Point(25, 145), label9.getPreferredSize()));
+
+            //---- currentSteamPassword ----
+            currentSteamPassword.setEditable(false);
             editAccountDialogContentPane.add(currentSteamPassword);
             currentSteamPassword.setBounds(20, 160, 165, 40);
 
@@ -522,6 +659,7 @@ public class MainWindow extends JFrame {
 
             //---- setEdit ----
             setEdit.setText("Set");
+            setEdit.addActionListener(e -> setEditActionPerformed(e));
             editAccountDialogContentPane.add(setEdit);
             setEdit.setBounds(25, 230, setEdit.getPreferredSize().width, 35);
             editAccountDialogContentPane.add(newAccountName);
@@ -545,10 +683,19 @@ public class MainWindow extends JFrame {
             label12.setText("New Steam Password");
             editAccountDialogContentPane.add(label12);
             label12.setBounds(new Rectangle(new Point(215, 145), label12.getPreferredSize()));
+
+            //---- keepAccountName ----
+            keepAccountName.addItemListener(e -> keepAccountNameItemStateChanged(e));
             editAccountDialogContentPane.add(keepAccountName);
             keepAccountName.setBounds(new Rectangle(new Point(385, 40), keepAccountName.getPreferredSize()));
+
+            //---- keepSteamName ----
+            keepSteamName.addItemListener(e -> keepSteamNameItemStateChanged(e));
             editAccountDialogContentPane.add(keepSteamName);
             keepSteamName.setBounds(385, 105, 18, 18);
+
+            //---- keepSteamPassword ----
+            keepSteamPassword.addItemListener(e -> keepSteamPasswordItemStateChanged(e));
             editAccountDialogContentPane.add(keepSteamPassword);
             keepSteamPassword.setBounds(385, 170, 18, 18);
 
@@ -596,6 +743,7 @@ public class MainWindow extends JFrame {
     private JButton causeException;
     private JButton sopHelloWorld;
     private JButton printFromTwoThreads;
+    private JLabel label14;
     private JDialog addAccountDialog;
     private JButton add;
     private JButton cancelAdd;
@@ -632,4 +780,6 @@ public class MainWindow extends JFrame {
     private JCheckBox keepSteamPassword;
     private JLabel label13;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    private DefaultTreeModel treeModel;
+    private Account selectedAccount;
 }

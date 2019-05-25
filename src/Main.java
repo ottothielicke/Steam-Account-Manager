@@ -23,7 +23,7 @@ public class Main {
 
     }
 
-    public static MainWindow getOkay() { return window; }
+    public static MainWindow getWindow() { return window;}
 
     public static AccountHandler getAccountHandler() { return accountHandler; }
 }

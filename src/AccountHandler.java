@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.function.Function;
 
 public class AccountHandler {
     private static final String filePath = "C:\\Users\\otto\\Desktop\\Accounts.txt";
@@ -51,16 +50,26 @@ public class AccountHandler {
             }
             System.out.println("Parsing Successful");
             System.out.println("Creating Tree...");
-            DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Accounts");
-            for (int i = 0; i < accounts.size(); i++) {
-                rootNode.add(new DefaultMutableTreeNode(accounts.get(i)));
-            }
-
-            Main.getOkay().setTreeModel(new DefaultTreeModel(rootNode));
+            createTreeModel(accounts);
             System.out.println("Load Successful");
             this.isLoaded = true;
         } else
             System.out.println("Accounts Already Loaded");
+    }
+
+    public void createTreeModel(ArrayList<Account> accounts){
+        DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode();
+        for(int i = 0; i < accounts.size(); i++){
+            rootNode.add(new DefaultMutableTreeNode(accounts.get(i)));
+        }
+        DefaultTreeModel treeModel = new DefaultTreeModel(rootNode);
+        Main.getWindow().setTreeModel(treeModel);
+        Main.getWindow().getTreeModel().reload();
+    }
+
+    public void addAccount(Account account){
+        this.accounts.add(account);
+        createTreeModel(this.accounts);
     }
 
     public void printAccounts() {

@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.194" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "6.0.6.4.204" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -35,6 +35,19 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JTree" ) {
 						name: "accountTree"
 						"rootVisible": false
+						"model": new javax.swing.tree.DefaultTreeModel( new javax.swing.tree.DefaultMutableTreeNode {
+							userObject: "(root)"
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "No"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Accounts"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Loaded"
+							} )
+						} )
+						addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "accountTreePropertyChange", true ) )
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 140
@@ -86,6 +99,7 @@ new FormModel {
 					name: "editAccount"
 					"text": "Edit Account"
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "editAccountActionPerformed", true ) )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "editAccountActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
@@ -227,6 +241,13 @@ new FormModel {
 				"x": 25
 				"y": 55
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label14"
+				"text": "yaw = yaw"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 40
+				"y": 105
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 710, 10 )
 			"size": new java.awt.Dimension( 435, 275 )
@@ -241,6 +262,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "add"
 				"text": "Add"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 20
 				"y": 260
@@ -400,6 +422,8 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "currentSteamName"
+				"editable": false
+				"background": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 20
 				"y": 95
@@ -415,6 +439,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "currentSteamPassword"
+				"editable": false
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 20
 				"y": 160
@@ -433,6 +458,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "setEdit"
 				"text": "Set"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "setEditActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 25
 				"y": 230
@@ -485,12 +511,14 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "keepAccountName"
+				addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "keepAccountNameItemStateChanged", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 385
 				"y": 40
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "keepSteamName"
+				addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "keepSteamNameItemStateChanged", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 18
 				"height": 18
@@ -499,6 +527,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "keepSteamPassword"
+				addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "keepSteamPasswordItemStateChanged", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 18
 				"height": 18
