@@ -79,7 +79,6 @@ new FormModel {
 					name: "addAccount"
 					"text": "Add Account"
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addAccountActionPerformed", true ) )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addAccountActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
 					"y": 30
@@ -87,8 +86,9 @@ new FormModel {
 					"height": 25
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button1"
+					name: "removeAccount"
 					"text": "Remove Account"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "removeAccountActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
 					"y": 55
@@ -98,8 +98,6 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "editAccount"
 					"text": "Edit Account"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "editAccountActionPerformed", true ) )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "editAccountActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
@@ -122,6 +120,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "save"
 						"text": "Save"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "saveActionPerformed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "saveAs"
@@ -131,12 +130,10 @@ new FormModel {
 						name: "settings"
 						"text": "Settings"
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "settingsActionPerformed", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "settingsActionPerformed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "exit"
 						"text": "Exit"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem1ActionPerformed", true ) )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "exitActionPerformed", true ) )
 					} )
 				} )
@@ -161,7 +158,6 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "saveSettingsButton"
 				"text": "Save Settings"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "saveSettingsButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 30
@@ -458,6 +454,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "setEdit"
 				"text": "Set"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "setEditActionPerformed", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "setEditActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 25

@@ -16,15 +16,11 @@ import net.miginfocom.swing.*;
  * @author unknown
  */
 public class MainWindow extends JFrame {
-    public static MainWindow mainWindow = null;
     public MainWindow() {
         initComponents();
     }
 
     public JTextArea getConsoleArea(){ return this.consoleOutput; }
-    private void menuItem1ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
 
     private void exitActionPerformed(ActionEvent e) {
         System.exit(0);
@@ -51,10 +47,6 @@ public class MainWindow extends JFrame {
         throw new NullPointerException();
     }
 
-    private void button1ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
     private void sopHelloWorldActionPerformed(ActionEvent e) {
         System.out.println("Hello World");
     }
@@ -77,23 +69,17 @@ public class MainWindow extends JFrame {
 
     private void loadAccountActionPerformed(ActionEvent e) {
         boolean loadSuccessful = false;
-        try {
-            loadSuccessful = Main.getAccountHandler().loadAccount((Account) ((DefaultMutableTreeNode) accountTree.getSelectionModel().getLeadSelectionPath().getLastPathComponent()).getUserObject());
-        }
-        catch(InterruptedException e1){
-            System.out.println("ok");
-        }
+        loadSuccessful = Main.getAccountHandler().loadAccount((Account) ((DefaultMutableTreeNode) accountTree.getSelectionModel().getLeadSelectionPath().getLastPathComponent()).getUserObject());
         if(!loadSuccessful)
-            System.out.println("Account Load Failed");
+            System.out.println("Steam Load Failed");
         else
-            System.out.println("Account Load Successful");
+            System.out.println("Steam Load Successful");
+
     }
 
     private void loadCheatActionPerformed(ActionEvent e) {
-        if(cheatDirectoryField.getText().isEmpty()){
-            System.out.println("No Cheat Directory");
-        }
-
+        //TODO implement load cheat function
+        System.out.println("This function is not enabled in this version");
     }
 
     private void addAccountActionPerformed(ActionEvent e) {
@@ -120,10 +106,6 @@ public class MainWindow extends JFrame {
 
         }
 
-    }
-
-    private void button2ActionPerformed(ActionEvent e) {
-        // TODO add your code here
     }
 
     private void cancelEditActionPerformed(ActionEvent e) {
@@ -225,6 +207,14 @@ public class MainWindow extends JFrame {
         this.accountTree.repaint();
     }
 
+    private void saveActionPerformed(ActionEvent e) {
+        Main.getAccountHandler().save();
+    }
+
+    private void removeAccountActionPerformed(ActionEvent e) {
+        Main.getAccountHandler().removeAccount(selectedAccount);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - my man
@@ -244,7 +234,7 @@ public class MainWindow extends JFrame {
         loadAccount = new JButton();
         loadCheat = new JButton();
         addAccount = new JButton();
-        button1 = new JButton();
+        removeAccount = new JButton();
         editAccount = new JButton();
         settingsDialog = new JDialog();
         checkBox1 = new JCheckBox();
@@ -314,6 +304,7 @@ public class MainWindow extends JFrame {
 
                 //---- save ----
                 save.setText("Save");
+                save.addActionListener(e -> saveActionPerformed(e));
                 file.add(save);
 
                 //---- saveAs ----
@@ -322,18 +313,12 @@ public class MainWindow extends JFrame {
 
                 //---- settings ----
                 settings.setText("Settings");
-                settings.addActionListener(e -> {
-			settingsActionPerformed(e);
-			settingsActionPerformed(e);
-		});
+                settings.addActionListener(e -> settingsActionPerformed(e));
                 file.add(settings);
 
                 //---- exit ----
                 exit.setText("Exit");
-                exit.addActionListener(e -> {
-			menuItem1ActionPerformed(e);
-			exitActionPerformed(e);
-		});
+                exit.addActionListener(e -> exitActionPerformed(e));
                 file.add(exit);
             }
             menuBar1.add(file);
@@ -402,25 +387,19 @@ public class MainWindow extends JFrame {
 
             //---- addAccount ----
             addAccount.setText("Add Account");
-            addAccount.addActionListener(e -> {
-			addAccountActionPerformed(e);
-			addAccountActionPerformed(e);
-		});
+            addAccount.addActionListener(e -> addAccountActionPerformed(e));
             mainPanel.add(addAccount);
             addAccount.setBounds(5, 30, 130, 25);
 
-            //---- button1 ----
-            button1.setText("Remove Account");
-            mainPanel.add(button1);
-            button1.setBounds(5, 55, 130, 25);
+            //---- removeAccount ----
+            removeAccount.setText("Remove Account");
+            removeAccount.addActionListener(e -> removeAccountActionPerformed(e));
+            mainPanel.add(removeAccount);
+            removeAccount.setBounds(5, 55, 130, 25);
 
             //---- editAccount ----
             editAccount.setText("Edit Account");
-            editAccount.addActionListener(e -> {
-			button2ActionPerformed(e);
-			editAccountActionPerformed(e);
-			editAccountActionPerformed(e);
-		});
+            editAccount.addActionListener(e -> editAccountActionPerformed(e));
             mainPanel.add(editAccount);
             editAccount.setBounds(5, 80, 130, 25);
 
@@ -456,10 +435,7 @@ public class MainWindow extends JFrame {
 
             //---- saveSettingsButton ----
             saveSettingsButton.setText("Save Settings");
-            saveSettingsButton.addActionListener(e -> {
-			button1ActionPerformed(e);
-			saveSettingsButtonActionPerformed(e);
-		});
+            saveSettingsButton.addActionListener(e -> saveSettingsButtonActionPerformed(e));
             settingsDialogContentPane.add(saveSettingsButton);
             saveSettingsButton.setBounds(new Rectangle(new Point(30, 170), saveSettingsButton.getPreferredSize()));
 
@@ -659,7 +635,10 @@ public class MainWindow extends JFrame {
 
             //---- setEdit ----
             setEdit.setText("Set");
-            setEdit.addActionListener(e -> setEditActionPerformed(e));
+            setEdit.addActionListener(e -> {
+			setEditActionPerformed(e);
+			setEditActionPerformed(e);
+		});
             editAccountDialogContentPane.add(setEdit);
             setEdit.setBounds(25, 230, setEdit.getPreferredSize().width, 35);
             editAccountDialogContentPane.add(newAccountName);
@@ -729,7 +708,7 @@ public class MainWindow extends JFrame {
     private JButton loadAccount;
     private JButton loadCheat;
     private JButton addAccount;
-    private JButton button1;
+    private JButton removeAccount;
     private JButton editAccount;
     private JDialog settingsDialog;
     private JCheckBox checkBox1;
