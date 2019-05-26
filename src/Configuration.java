@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.MissingResourceException;
 import java.util.Scanner;
 
 public class Configuration {
@@ -22,7 +21,7 @@ public class Configuration {
 
                 //Account Location
                 if(currentLine[0].equals("accountlocation")){
-                    this.accountFileLocation = currentLine[1];
+                    this.accountFileLocation = "C:\\Users\\" + System.getenv("USERNAME") + currentLine[1];
                 }
 
             }

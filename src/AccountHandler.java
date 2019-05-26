@@ -35,6 +35,11 @@ public class AccountHandler {
                 } else {
                     System.out.println("Default file not found");
                     System.out.println("The file location is " + this.filePath);
+                    System.out.println("Creating File");
+                    new File(filePath.substring(0, filePath.length() - 12)).mkdir();
+                    accountsFile.createNewFile();
+                    loaded = true;
+                    createTreeModel(this.accounts);
                 }
             }
         }
@@ -44,6 +49,10 @@ public class AccountHandler {
         }
         catch(IndexOutOfBoundsException e){
             System.err.println("Most likely caused due to an empty file or bad line ending. Can be ignored probably but you should report this.");
+            e.printStackTrace();
+        }
+        catch(IOException e){
+            System.err.println("Error creating default configuration file");
             e.printStackTrace();
         }
     }

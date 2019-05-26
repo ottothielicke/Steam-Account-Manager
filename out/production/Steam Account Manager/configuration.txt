@@ -1,1 +1,1 @@
-accountlocation~C:\Users\otto\Desktop\accounts.txt
+accountlocation~\Desktop\Steam Account Manager\accounts.txt
