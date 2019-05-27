@@ -1,4 +1,3 @@
-
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.io.File;
@@ -7,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//TODO code cleanup
 public class AccountHandler {
     private String filePath;
     private Boolean loaded = false;

@@ -1,9 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Scanner;
 
 public class Configuration {
     private InputStream configurationURL;
@@ -14,6 +9,15 @@ public class Configuration {
     }
 
     private void load(){
+        //TODO fix load function to use set location in configuration file
+        /*
+         *TODO implement checking for configuration file at static resource defined location.
+         * If no file exists prompt user to create configuration file.
+         * If the user prompts no, default to static resource defaults.
+         * If the user accepts, locate configuration file at statically defined location
+         * and proceed loading from that file. This allows for user to define account file
+         * location and for other variables to be defined based on user preference.
+        */
         /*
         try {
             //File configurationFile = new File(this.configurationURL);
@@ -26,10 +30,7 @@ public class Configuration {
                 if(currentLine[0].equals("accountlocation")){
                     this.accountFileLocation = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Steam Account Manager\\accounts.txt";
                 }
-
             }
-
-
         }
         catch(URISyntaxException e){
             System.err.println("Internal error. Contact author");

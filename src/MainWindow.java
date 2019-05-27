@@ -10,8 +10,14 @@ import net.miginfocom.swing.*;
  * Created by JFormDesigner on Sat May 11 12:16:18 PDT 2019
  */
 
-
-
+//TODO cleanup actionlistener functions and variables not defined by JFormDesigner
+/* TODO Rework gui. The main gui is too small and cramped. It should be bigger.
+ * TODO The edit and add windows are okay they just need to not scale with weird shit.
+ * TODO Change the tree display for accounts. The root node should still be invisible but
+ *  all of the children should be items about the account. For example, username, password
+ *  etc.
+*
+*/
 /**
  * @author unknown
  */

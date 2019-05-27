@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-
+//TODO create instance variables in classes instead of using variables from main class.
 public class Main {
     private static MainWindow window;
     private static AccountHandler accountHandler;
