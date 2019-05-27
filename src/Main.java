@@ -1,12 +1,13 @@
 import javax.swing.*;
+import java.io.InputStream;
 import java.io.PrintStream;
-import java.net.URL;
+
 
 public class Main {
     private static MainWindow window;
     private static AccountHandler accountHandler;
     public static void main(String[] args){
-        URL configURL = Main.class.getResource("configuration.txt");
+        InputStream configURL = Main.class.getResourceAsStream("configuration.txt");
 
         Configuration config = new Configuration(configURL);
         accountHandler = new AccountHandler(config.getAccountFileLocation());
