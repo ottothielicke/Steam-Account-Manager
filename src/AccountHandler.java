@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+
 //TODO code cleanup
+//TODO add autosaving
+//TODO add field parsing for saving and loading
 public class AccountHandler {
     private String filePath;
     private Boolean loaded = false;
@@ -28,6 +30,7 @@ public class AccountHandler {
                         String line = scan.nextLine();
                         String[] splitLine = line.split(":");
                         this.accounts.add(new Account(splitLine[0], splitLine[1], splitLine[2]));
+
                     }
                     loaded = true;
                     createTreeModel(this.accounts);
@@ -59,7 +62,21 @@ public class AccountHandler {
     public void createTreeModel(ArrayList<Account> accounts){
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode();
         for(int i = 0; i < accounts.size(); i++){
-            rootNode.add(new DefaultMutableTreeNode(accounts.get(i)));
+            Account currentAccount = accounts.get(i);
+            DefaultMutableTreeNode currentNode = new DefaultMutableTreeNode(currentAccount);
+            currentNode.add(new DefaultMutableTreeNode("Username: " + currentAccount.getUsername()));
+            currentNode.add(new DefaultMutableTreeNode("Password: " + currentAccount.getPassword()));
+            if(currentAccount.getFields() != null){
+                HashMap<String, String> currentFields = currentAccount.getFields();
+                Set<String> keySet = currentFields.keySet();
+                Iterator<String> keysIterator = keySet.iterator();
+                for(int k = 0; k < currentFields.size(); k++){
+                    String key = keysIterator.next();
+                    String value = currentFields.get(key);
+                    currentNode.add(new DefaultMutableTreeNode(key + ": " + value));
+                }
+            }
+            rootNode.add(currentNode);
         }
         DefaultTreeModel treeModel = new DefaultTreeModel(rootNode);
         Main.getWindow().setTreeModel(treeModel);

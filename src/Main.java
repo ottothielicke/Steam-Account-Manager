@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.io.InputStream;
 import java.io.PrintStream;
-
+//TODO add auto exec config setup for csgo
+//TODO change account tree structure
+//TODO auto grab friend code
+//TODO get account ban status
 //TODO create instance variables in classes instead of using variables from main class.
 public class Main {
     private static MainWindow window;

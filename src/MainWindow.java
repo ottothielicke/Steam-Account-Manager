@@ -1,11 +1,15 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.*;
 import javax.swing.event.*;
-import javax.swing.plaf.*;
+import javax.swing.table.*;
 import javax.swing.tree.*;
-import net.miginfocom.swing.*;
+import org.jdesktop.beansbinding.*;
+import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 /*
  * Created by JFormDesigner on Sat May 11 12:16:18 PDT 2019
  */
@@ -64,6 +68,7 @@ public class MainWindow extends JFrame {
     public void setTreeModel(DefaultTreeModel treeModel){
         this.treeModel = treeModel;
         accountTree.setModel(treeModel);
+        accountTree.getCellRenderer();
         accountTree.repaint();
     }
 
@@ -75,7 +80,15 @@ public class MainWindow extends JFrame {
 
     private void loadAccountActionPerformed(ActionEvent e) {
         boolean loadSuccessful = false;
-        loadSuccessful = Main.getAccountHandler().loadAccount((Account) ((DefaultMutableTreeNode) accountTree.getSelectionModel().getLeadSelectionPath().getLastPathComponent()).getUserObject());
+        TreePath path = accountTree.getSelectionModel().getLeadSelectionPath();
+        for(Object object : path.getPath()){
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode)object;
+            if(node.getUserObject() instanceof Account){
+                loadSuccessful = Main.getAccountHandler().loadAccount((Account)node.getUserObject());
+
+            }
+            System.out.println(object.getClass());
+        }
         if(!loadSuccessful)
             System.out.println("Steam Load Failed");
         else
@@ -122,7 +135,12 @@ public class MainWindow extends JFrame {
         String accountName = this.accountNameField.getText();
         String steamName = this.usernameField.getText();
         String password = String.copyValueOf(this.passwordField.getPassword());
-        Account newAccount = new Account(steamName, password, accountName);
+        HashMap<String, String> fields = new HashMap<>();
+        TableModel currentModel = fieldTable.getModel();
+        for(int i = 0; i < fieldTable.getRowCount(); i++){
+            fields.put((String)currentModel.getValueAt(i, 0), (String)currentModel.getValueAt(i, 1));
+        }
+        Account newAccount = new Account(steamName, password, accountName, fields);
         if(newAccount.isValid()) {
             Main.getAccountHandler().addAccount(newAccount);
             this.addAccountDialog.setVisible(false);
@@ -221,9 +239,20 @@ public class MainWindow extends JFrame {
         Main.getAccountHandler().removeAccount(selectedAccount);
     }
 
+    private void newFieldActionPerformed(ActionEvent e) {
+        ((DefaultTableModel)fieldTable.getModel()).addRow(new Object[]{""});
+        fieldSelectionBox.addItem(fieldTable.getModel().getRowCount());
+    }
+
+    private void deleteFieldActionPerformed(ActionEvent e) {
+        //TODO recreate box model since all numbers will bingus the bar
+        ((DefaultTableModel) fieldTable.getModel()).removeRow(fieldSelectionBox.getSelectedIndex());
+        fieldSelectionBox.removeItem(fieldSelectionBox.getItemAt(fieldSelectionBox.getSelectedIndex()));
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - my man
+        // Generated using JFormDesigner Evaluation license - Bubby
         menuBar1 = new JMenuBar();
         file = new JMenu();
         newAccountList = new JMenuItem();
@@ -264,13 +293,11 @@ public class MainWindow extends JFrame {
         label2 = new JLabel();
         label3 = new JLabel();
         label4 = new JLabel();
-        label5 = new JLabel();
-        scrollPane2 = new JScrollPane();
-        fieldTree = new JTree();
         newField = new JButton();
-        label6 = new JLabel();
-        textField2 = new JTextField();
         deleteField = new JButton();
+        fieldTableScrollPane = new JScrollPane();
+        fieldTable = new JTable();
+        fieldSelectionBox = new JComboBox();
         editAccountDialog = new JDialog();
         currentAccountName = new JTextField();
         label7 = new JLabel();
@@ -358,7 +385,7 @@ public class MainWindow extends JFrame {
             importAccounts.setText("Import Accounts");
             importAccounts.addActionListener(e -> importAccountsActionPerformed(e));
             mainPanel.add(importAccounts);
-            importAccounts.setBounds(5, 5, 130, 25);
+            importAccounts.setBounds(5, 5, 160, 35);
 
             //======== scrollPane1 ========
             {
@@ -377,37 +404,37 @@ public class MainWindow extends JFrame {
                 scrollPane1.setViewportView(accountTree);
             }
             mainPanel.add(scrollPane1);
-            scrollPane1.setBounds(140, 5, 255, 150);
+            scrollPane1.setBounds(175, 5, 665, 395);
 
             //---- loadAccount ----
             loadAccount.setText("Load Selected Account");
             loadAccount.addActionListener(e -> loadAccountActionPerformed(e));
             mainPanel.add(loadAccount);
-            loadAccount.setBounds(5, 105, 130, 25);
+            loadAccount.setBounds(5, 145, 160, 35);
 
             //---- loadCheat ----
             loadCheat.setText("Load Cheat");
             loadCheat.addActionListener(e -> loadCheatActionPerformed(e));
             mainPanel.add(loadCheat);
-            loadCheat.setBounds(5, 130, 130, 25);
+            loadCheat.setBounds(5, 180, 160, 35);
 
             //---- addAccount ----
             addAccount.setText("Add Account");
             addAccount.addActionListener(e -> addAccountActionPerformed(e));
             mainPanel.add(addAccount);
-            addAccount.setBounds(5, 30, 130, 25);
+            addAccount.setBounds(5, 40, 160, 35);
 
             //---- removeAccount ----
             removeAccount.setText("Remove Account");
             removeAccount.addActionListener(e -> removeAccountActionPerformed(e));
             mainPanel.add(removeAccount);
-            removeAccount.setBounds(5, 55, 130, 25);
+            removeAccount.setBounds(5, 75, 160, 35);
 
             //---- editAccount ----
             editAccount.setText("Edit Account");
             editAccount.addActionListener(e -> editAccountActionPerformed(e));
             mainPanel.add(editAccount);
-            editAccount.setBounds(5, 80, 130, 25);
+            editAccount.setBounds(5, 110, 160, 35);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -520,13 +547,13 @@ public class MainWindow extends JFrame {
             add.setText("Add");
             add.addActionListener(e -> addActionPerformed(e));
             addAccountDialogContentPane.add(add);
-            add.setBounds(20, 260, add.getPreferredSize().width, 35);
+            add.setBounds(20, 215, add.getPreferredSize().width, 35);
 
             //---- cancelAdd ----
             cancelAdd.setText("Cancel");
             cancelAdd.addActionListener(e -> cancelAddActionPerformed(e));
             addAccountDialogContentPane.add(cancelAdd);
-            cancelAdd.setBounds(105, 260, cancelAdd.getPreferredSize().width, 35);
+            cancelAdd.setBounds(105, 215, cancelAdd.getPreferredSize().width, 35);
             addAccountDialogContentPane.add(accountNameField);
             accountNameField.setBounds(20, 25, 165, 40);
             addAccountDialogContentPane.add(usernameField);
@@ -549,49 +576,42 @@ public class MainWindow extends JFrame {
             addAccountDialogContentPane.add(label4);
             label4.setBounds(new Rectangle(new Point(25, 130), label4.getPreferredSize()));
 
-            //---- label5 ----
-            label5.setText("DISABLED");
-            label5.setForeground(Color.red);
-            addAccountDialogContentPane.add(label5);
-            label5.setBounds(new Rectangle(new Point(240, 10), label5.getPreferredSize()));
-
-            //======== scrollPane2 ========
-            {
-
-                //---- fieldTree ----
-                fieldTree.setModel(new DefaultTreeModel(
-                    new DefaultMutableTreeNode("(root)") {
-                        {
-                            add(new DefaultMutableTreeNode("This"));
-                            add(new DefaultMutableTreeNode("is"));
-                            add(new DefaultMutableTreeNode("a"));
-                            add(new DefaultMutableTreeNode("placeholder"));
-                        }
-                    }));
-                fieldTree.setRootVisible(false);
-                scrollPane2.setViewportView(fieldTree);
-            }
-            addAccountDialogContentPane.add(scrollPane2);
-            scrollPane2.setBounds(195, 30, 145, 175);
-
             //---- newField ----
             newField.setText("New Field");
+            newField.addActionListener(e -> newFieldActionPerformed(e));
             addAccountDialogContentPane.add(newField);
-            newField.setBounds(195, 215, newField.getPreferredSize().width, 35);
-
-            //---- label6 ----
-            label6.setText("Field Data");
-            addAccountDialogContentPane.add(label6);
-            label6.setBounds(new Rectangle(new Point(25, 190), label6.getPreferredSize()));
-            addAccountDialogContentPane.add(textField2);
-            textField2.setBounds(20, 205, 165, 40);
+            newField.setBounds(210, 215, newField.getPreferredSize().width, 35);
 
             //---- deleteField ----
             deleteField.setText("Delete Field");
+            deleteField.addActionListener(e -> deleteFieldActionPerformed(e));
             addAccountDialogContentPane.add(deleteField);
-            deleteField.setBounds(195, 260, deleteField.getPreferredSize().width, 35);
+            deleteField.setBounds(400, 215, deleteField.getPreferredSize().width, 35);
 
-            addAccountDialogContentPane.setPreferredSize(new Dimension(365, 340));
+            //======== fieldTableScrollPane ========
+            {
+
+                //---- fieldTable ----
+                fieldTable.setModel(new DefaultTableModel(
+                    new Object[][] {
+                    },
+                    new String[] {
+                        "Field Name", "Field Data"
+                    }
+                ));
+                {
+                    TableColumnModel cm = fieldTable.getColumnModel();
+                    cm.getColumn(0).setResizable(false);
+                    cm.getColumn(1).setResizable(false);
+                }
+                fieldTableScrollPane.setViewportView(fieldTable);
+            }
+            addAccountDialogContentPane.add(fieldTableScrollPane);
+            fieldTableScrollPane.setBounds(215, 5, 275, 203);
+            addAccountDialogContentPane.add(fieldSelectionBox);
+            fieldSelectionBox.setBounds(300, 215, 100, 35);
+
+            addAccountDialogContentPane.setPreferredSize(new Dimension(515, 300));
             addAccountDialog.pack();
             addAccountDialog.setLocationRelativeTo(addAccountDialog.getOwner());
         }
@@ -697,7 +717,7 @@ public class MainWindow extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - my man
+    // Generated using JFormDesigner Evaluation license - Bubby
     private JMenuBar menuBar1;
     private JMenu file;
     private JMenuItem newAccountList;
@@ -738,13 +758,11 @@ public class MainWindow extends JFrame {
     private JLabel label2;
     private JLabel label3;
     private JLabel label4;
-    private JLabel label5;
-    private JScrollPane scrollPane2;
-    private JTree fieldTree;
     private JButton newField;
-    private JLabel label6;
-    private JTextField textField2;
     private JButton deleteField;
+    private JScrollPane fieldTableScrollPane;
+    private JTable fieldTable;
+    private JComboBox fieldSelectionBox;
     private JDialog editAccountDialog;
     private JTextField currentAccountName;
     private JLabel label7;

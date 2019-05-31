@@ -27,8 +27,8 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
 					"y": 5
-					"width": 130
-					"height": 25
+					"width": 160
+					"height": 35
 				} )
 				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 					name: "scrollPane1"
@@ -50,10 +50,10 @@ new FormModel {
 						addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "accountTreePropertyChange", true ) )
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 140
+					"x": 175
 					"y": 5
-					"width": 255
-					"height": 150
+					"width": 665
+					"height": 395
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "loadAccount"
@@ -61,9 +61,9 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "loadAccountActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
-					"y": 105
-					"width": 130
-					"height": 25
+					"y": 145
+					"width": 160
+					"height": 35
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "loadCheat"
@@ -71,9 +71,9 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "loadCheatActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
-					"y": 130
-					"width": 130
-					"height": 25
+					"y": 180
+					"width": 160
+					"height": 35
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "addAccount"
@@ -81,9 +81,9 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addAccountActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
-					"y": 30
-					"width": 130
-					"height": 25
+					"y": 40
+					"width": 160
+					"height": 35
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "removeAccount"
@@ -91,9 +91,9 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "removeAccountActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
-					"y": 55
-					"height": 25
-					"width": 130
+					"y": 75
+					"height": 35
+					"width": 160
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "editAccount"
@@ -101,9 +101,9 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "editAccountActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
-					"y": 80
-					"height": 25
-					"width": 130
+					"y": 110
+					"height": 35
+					"width": 160
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
@@ -139,8 +139,8 @@ new FormModel {
 				} )
 			}
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 10 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"location": new java.awt.Point( 0, 15 )
+			"size": new java.awt.Dimension( 850, 550 )
 		} )
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
 			"autoSize": false
@@ -204,7 +204,7 @@ new FormModel {
 				"y": 175
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 405, 10 )
+			"location": new java.awt.Point( 865, 0 )
 			"size": new java.awt.Dimension( 300, 245 )
 		} )
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
@@ -245,7 +245,7 @@ new FormModel {
 				"y": 105
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 710, 10 )
+			"location": new java.awt.Point( 875, 265 )
 			"size": new java.awt.Dimension( 435, 275 )
 		} )
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
@@ -261,7 +261,7 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 20
-				"y": 260
+				"y": 215
 				"height": 35
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -270,7 +270,7 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelAddActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 105
-				"y": 260
+				"y": 215
 				"height": 35
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -318,75 +318,59 @@ new FormModel {
 				"x": 25
 				"y": 130
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label5"
-				"text": "DISABLED"
-				"foreground": new java.awt.Color( 255, 0, 0, 255 )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 240
-				"y": 10
-			} )
-			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-				name: "scrollPane2"
-				add( new FormComponent( "javax.swing.JTree" ) {
-					name: "fieldTree"
-					"model": new javax.swing.tree.DefaultTreeModel( new javax.swing.tree.DefaultMutableTreeNode {
-						userObject: "(root)"
-						add( new javax.swing.tree.DefaultMutableTreeNode {
-							userObject: "This"
-						} )
-						add( new javax.swing.tree.DefaultMutableTreeNode {
-							userObject: "is"
-						} )
-						add( new javax.swing.tree.DefaultMutableTreeNode {
-							userObject: "a"
-						} )
-						add( new javax.swing.tree.DefaultMutableTreeNode {
-							userObject: "placeholder"
-						} )
-					} )
-					"rootVisible": false
-				} )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"height": 175
-				"x": 195
-				"y": 30
-				"width": 145
-			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "newField"
 				"text": "New Field"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "newFieldActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 195
+				"x": 210
 				"y": 215
 				"height": 35
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label6"
-				"text": "Field Data"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 25
-				"y": 190
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField2"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 20
-				"y": 205
-				"width": 165
-				"height": 40
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "deleteField"
 				"text": "Delete Field"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteFieldActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 195
-				"y": 260
+				"x": 400
+				"y": 215
 				"height": 35
 			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "fieldTableScrollPane"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "fieldTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+						add( "Field Name" )
+						add( "Field Data" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+					} )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 215
+				"y": 5
+				"width": 275
+				"height": 203
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "fieldSelectionBox"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 300
+				"y": 215
+				"height": 35
+				"width": 100
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 325 )
-			"size": new java.awt.Dimension( 365, 340 )
+			"location": new java.awt.Point( 0, 575 )
+			"size": new java.awt.Dimension( 515, 300 )
 		} )
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
 			"autoSize": false
@@ -539,7 +523,7 @@ new FormModel {
 				"y": 10
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 370, 325 )
+			"location": new java.awt.Point( 860, 605 )
 			"size": new java.awt.Dimension( 425, 315 )
 		} )
 	}
