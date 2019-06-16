@@ -33,7 +33,7 @@ public class AccountHandler {
 
                     }
                     loaded = true;
-                    createTreeModel(this.accounts);
+                    createTreeModel();
                 } else {
                     System.out.println("Default file not found");
                     System.out.println("The file location is " + this.filePath);
@@ -41,7 +41,7 @@ public class AccountHandler {
                     new File(filePath.substring(0, filePath.length() - 12)).mkdir();
                     accountsFile.createNewFile();
                     loaded = true;
-                    createTreeModel(this.accounts);
+                    createTreeModel();
                 }
             }
         }
@@ -59,7 +59,7 @@ public class AccountHandler {
         }
     }
 
-    public void createTreeModel(ArrayList<Account> accounts){
+    public void createTreeModel(){
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode();
         for(int i = 0; i < accounts.size(); i++){
             Account currentAccount = accounts.get(i);
@@ -85,12 +85,12 @@ public class AccountHandler {
 
     public void addAccount(Account account){
         this.accounts.add(account);
-        createTreeModel(this.accounts);
+        createTreeModel();
     }
 
     public void removeAccount(Account account){
         this.accounts.remove(account);
-        createTreeModel(this.accounts);
+        createTreeModel();
     }
     public int getAccountCount() {
         return this.accounts.size();
@@ -123,7 +123,7 @@ public class AccountHandler {
             PrintWriter fileWriter = new PrintWriter(accountFile);
             for (int i = 0; i < this.accounts.size(); i++) {
                 Account currentAccount = this.accounts.get(i);
-                fileWriter.println(currentAccount.getUsername() + ":" + currentAccount.getPassword() + ":" + currentAccount.getSteamname());
+                fileWriter.println(currentAccount.getUsername() + ":" + currentAccount.getPassword() + ":" + currentAccount.getAccountName());
                 fileWriter.flush();
             }
             System.out.println("Save successful");

@@ -6,23 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/OutputStreamHandler.java" line="4" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/src/OutputStreamHandler.java" line="3" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c991eb1-1b9e-4fa4-9e63-d3dfdfd0012e" name="Default Changelist" comment="Added 'Add Account' menu">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Steam Account Manager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Steam Account Manager.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/AccountHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/AccountHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow.jfd" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow.jfd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/OutputStreamHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/OutputStreamHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccountHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainWindow.jfd" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWindow.jfd" afterDir="false" />
     </list>
@@ -41,14 +35,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="248" column="101" selection-start-line="248" selection-start-column="101" selection-end-line="248" selection-end-column="101" />
+            <state relative-caret-position="171">
+              <caret line="211" column="65" lean-forward="true" selection-start-line="211" selection-start-column="65" selection-end-line="211" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8518#8519#0" expanded="true" />
-                <element signature="e#8565#8566#0" expanded="true" />
-                <marker date="1559346439435" expanded="true" signature="9235:29907" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-                <marker date="1559346439435" expanded="true" signature="29919:32331" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+                <element signature="e#8473#8474#0" expanded="true" />
+                <marker date="1560658582473" expanded="true" signature="9215:29768" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+                <marker date="1560658582473" expanded="true" signature="29780:32174" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
               </folding>
             </state>
           </provider>
@@ -62,11 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/OutputStreamHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state>
+              <caret column="21" selection-start-column="21" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -74,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AccountHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="731">
+              <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,11 +76,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="484">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#isValid#0;class#Account#0" />
               </folding>
             </state>
           </provider>
@@ -151,6 +140,8 @@
       <find>jfo</find>
       <find>addaccountactionperf</find>
       <find>addaccount</find>
+      <find>currentstea</find>
+      <find>keeppassword</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,7 +159,6 @@
         <option value="$PROJECT_DIR$/src/sample code" />
         <option value="$PROJECT_DIR$/src/MainWindow.form" />
         <option value="$PROJECT_DIR$/src/StreamHandler.java" />
-        <option value="$PROJECT_DIR$/src/OutputStreamHandler.java" />
         <option value="$PROJECT_DIR$/src/Window.java" />
         <option value="$PROJECT_DIR$/src/okay.jfd" />
         <option value="$PROJECT_DIR$/src/okay.java" />
@@ -176,6 +166,7 @@
         <option value="$PROJECT_DIR$/resources/configuration.txt" />
         <option value="$PROJECT_DIR$/src/Configuration.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/OutputStreamHandler.java" />
         <option value="$PROJECT_DIR$/src/Account.java" />
         <option value="$PROJECT_DIR$/src/AccountHandler.java" />
         <option value="$PROJECT_DIR$/src/MainWindow.jfd" />
@@ -184,8 +175,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-150" />
-    <option name="y" value="291" />
+    <option name="x" value="69" />
+    <option name="y" value="25" />
     <option name="width" value="1616" />
     <option name="height" value="876" />
   </component>
@@ -194,6 +185,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -221,8 +214,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -230,7 +221,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="steam-account-manager" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559276342474" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560658951529" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -303,7 +294,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49729145" visible="true" weight="0.14179105" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49729145" visible="true" weight="0.12100213" />
       <window_info id="Structure" order="1" sideWeight="0.50270855" side_tool="true" weight="0.12260128" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -504,17 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#isValid#0;class#Account#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -537,8 +517,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OutputStreamHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -547,8 +534,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AccountHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="731">
+          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -565,14 +552,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="248" column="101" selection-start-line="248" selection-start-column="101" selection-end-line="248" selection-end-column="101" />
+        <state relative-caret-position="171">
+          <caret line="211" column="65" lean-forward="true" selection-start-line="211" selection-start-column="65" selection-end-line="211" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8518#8519#0" expanded="true" />
-            <element signature="e#8565#8566#0" expanded="true" />
-            <marker date="1559346439435" expanded="true" signature="9235:29907" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1559346439435" expanded="true" signature="29919:32331" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+            <element signature="e#8473#8474#0" expanded="true" />
+            <marker date="1560658582473" expanded="true" signature="9215:29768" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+            <marker date="1560658582473" expanded="true" signature="29780:32174" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
           </folding>
         </state>
       </provider>

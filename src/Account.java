@@ -6,7 +6,7 @@ public class Account  {
 
     private String username;
     private String password;
-    private String steamname;
+    private String accountName;
     private HashMap<String, String> fields;
 
     public Account(){
@@ -25,10 +25,10 @@ public class Account  {
         this(username, password, steamname, new HashMap<>());
     }
 
-    public Account(String username, String password, String steamname, HashMap<String, String> fields){
+    public Account(String username, String password, String accountName, HashMap<String, String> fields){
         this.username = username;
         this.password = password;
-        this.steamname = steamname;
+        this.accountName = accountName;
         this.fields = fields;
     }
 
@@ -36,8 +36,8 @@ public class Account  {
         return password;
     }
 
-    public String getSteamname() {
-        return steamname;
+    public String getAccountName() {
+        return accountName;
     }
 
     public String getUsername() {
@@ -48,8 +48,8 @@ public class Account  {
         this.password = password;
     }
 
-    public void setSteamname(String steamname) {
-        this.steamname = steamname;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
     public void setUsername(String username) {
@@ -65,10 +65,10 @@ public class Account  {
     public int getFieldCount(){ return this.fields.size(); }
 
     public boolean isValid(){
-        if(this.username != null && this.password != null && this.steamname != null)
+        if(this.username != null && this.password != null && this.accountName != null)
             return true;
         return false;
     }
 
-    public String toString(){ return this.steamname; } //returns only steam name so current tree system wont break 5/30/19
+    public String toString(){ return this.accountName; } //returns only steam name so current tree system wont break 5/30/19
 }
