@@ -6,6 +6,9 @@ import java.io.PrintStream;
 //TODO auto grab friend code
 //TODO get account ban status
 //TODO create instance variables in classes instead of using variables from main class.
+//TODO fix weird order issue with field table in account tree
+//TODO fix field box numbering when deleting or better yet, have it be the field name once its set and just not bother with that shit
+//TODO add fields for edit dialog
 public class Main {
     private static MainWindow window;
     private static AccountHandler accountHandler;

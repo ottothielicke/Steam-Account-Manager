@@ -155,33 +155,6 @@ public class MainWindow extends JFrame {
                 currentUsername.setText(currentAccount.getUsername());
                 currentAccountName.setText(currentAccount.getAccountName());
                 currentPassword.setText(currentAccount.getPassword());
-                /*
-                if(keepAccountName.isSelected()){
-                    newAccountName.setEditable(false);
-                    newAccountName.setText(currentAccountName.getText());
-                }
-                else{
-                    newAccountName.setEditable(true);
-                    newAccountName.setText("");
-                }
-                if(keepPassword.isSelected()){
-                    newPassword.setEditable(false);
-                    newPassword.setText(currentPassword.getText());
-                }
-                else{
-                    newPassword.setEditable(true);
-                    newPassword.setText("");
-                }
-                if(keepUsername.isSelected()){
-                    newUsername.setEditable(false);
-                    newUsername.setText(currentUsername.getText());
-                }
-                else{
-                    newUsername.setEditable(true);
-                    newUsername.setText("");
-                }
-                editAccountDialog.repaint();
-                */
                 if(editAccountDialog.isVisible())
                     editAccountDialog.setVisible(false);
                 if(addAccountDialog.isVisible())
