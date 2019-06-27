@@ -10,6 +10,7 @@ import java.util.*;
 //TODO add autosaving
 //TODO add field parsing for saving and loading
 public class AccountHandler {
+    public static AccountHandler INSTANCE;
     private String filePath;
     private Boolean loaded = false;
     private ArrayList<Account> accounts;
@@ -17,6 +18,7 @@ public class AccountHandler {
     public AccountHandler(String filePath) {
         this.accounts = new ArrayList<>();
         this.filePath = filePath;
+        INSTANCE = this;
     }
 
     public void load() {
@@ -79,8 +81,8 @@ public class AccountHandler {
             rootNode.add(currentNode);
         }
         DefaultTreeModel treeModel = new DefaultTreeModel(rootNode);
-        Main.getWindow().setTreeModel(treeModel);
-        Main.getWindow().getTreeModel().reload();
+        MainWindow.INSTANCE.setTreeModel(treeModel);
+        MainWindow.INSTANCE.getTreeModel().reload();
     }
 
     public void addAccount(Account account){

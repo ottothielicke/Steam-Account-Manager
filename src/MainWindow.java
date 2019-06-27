@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -75,7 +76,7 @@ public class MainWindow extends JFrame {
     public DefaultTreeModel getTreeModel(){ return this.treeModel;}
 
     private void importAccountsActionPerformed(ActionEvent e) {
-        Main.getAccountHandler().load();
+        AccountHandler.INSTANCE.load();
     }
 
     private void loadAccountActionPerformed(ActionEvent e) {
@@ -84,7 +85,7 @@ public class MainWindow extends JFrame {
         for(Object object : path.getPath()){
             DefaultMutableTreeNode node = (DefaultMutableTreeNode)object;
             if(node.getUserObject() instanceof Account){
-                loadSuccessful = Main.getAccountHandler().loadAccount((Account)node.getUserObject());
+                loadSuccessful = AccountHandler.INSTANCE.loadAccount((Account)node.getUserObject());
 
             }
             System.out.println(object.getClass());
@@ -142,7 +143,7 @@ public class MainWindow extends JFrame {
         }
         Account newAccount = new Account(steamName, password, accountName, fields);
         if(newAccount.isValid()) {
-            Main.getAccountHandler().addAccount(newAccount);
+            AccountHandler.INSTANCE.addAccount(newAccount);
             this.addAccountDialog.setVisible(false);
         }
     }
@@ -206,15 +207,15 @@ public class MainWindow extends JFrame {
             this.selectedAccount.setUsername(newUsername.getText());
         if(!keepPassword.isSelected())
             this.selectedAccount.setPassword(newPassword.getText());
-        Main.getAccountHandler().createTreeModel();
+        AccountHandler.INSTANCE.createTreeModel();
     }
 
     private void saveActionPerformed(ActionEvent e) {
-        Main.getAccountHandler().save();
+        AccountHandler.INSTANCE.save();
     }
 
     private void removeAccountActionPerformed(ActionEvent e) {
-        Main.getAccountHandler().removeAccount(selectedAccount);
+        AccountHandler.INSTANCE.removeAccount(selectedAccount);
     }
 
     private void newFieldActionPerformed(ActionEvent e) {
@@ -223,14 +224,45 @@ public class MainWindow extends JFrame {
     }
 
     private void deleteFieldActionPerformed(ActionEvent e) {
-        //TODO recreate box model since all numbers will bingus the bar
-        ((DefaultTableModel) fieldTable.getModel()).removeRow(fieldSelectionBox.getSelectedIndex());
-        fieldSelectionBox.removeItem(fieldSelectionBox.getItemAt(fieldSelectionBox.getSelectedIndex()));
+        //TODO make combo option be the field name when field name is set
+        if(fieldSelectionBox.getSelectedIndex() != -1) {
+            ((DefaultTableModel) fieldTable.getModel()).removeRow(fieldSelectionBox.getSelectedIndex());
+            //fieldSelectionBox.removeItem(fieldSelectionBox.getItemAt(fieldSelectionBox.getSelectedIndex()));
+            int oldSelectedIndex = fieldSelectionBox.getSelectedIndex();
+            Object[] newObjects = new Object[fieldSelectionBox.getItemCount() - 1];
+            for (int i = 0; i < fieldSelectionBox.getItemCount() - 1; i++) {
+                newObjects[i] = i + 1;
+            }
+            fieldSelectionBox.setModel(new DefaultComboBoxModel(newObjects));
+            if (!(oldSelectedIndex >= newObjects.length))
+                fieldSelectionBox.setSelectedIndex(oldSelectedIndex);
+            else
+                fieldSelectionBox.setSelectedIndex(oldSelectedIndex - 1);
+            fieldSelectionBox.updateUI();
+        }
+    }
+
+    private void closeSteamActionPerformed(ActionEvent e) {
+        try {
+            Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "TASKKILL /F /IM steam.exe"});
+        }
+        catch(IOException e1){
+            e1.printStackTrace();
+        }
+    }
+
+    private void openSteamActionPerformed(ActionEvent e) {
+        try{
+            Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "\"C:\\Program Files (x86)\\Steam\\steam.exe\""});
+        }
+        catch(IOException e1){
+            e1.printStackTrace();
+        }
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Bubby
+        // Generated using JFormDesigner Evaluation license - AAAA
         menuBar1 = new JMenuBar();
         file = new JMenu();
         newAccountList = new JMenuItem();
@@ -249,6 +281,8 @@ public class MainWindow extends JFrame {
         addAccount = new JButton();
         removeAccount = new JButton();
         editAccount = new JButton();
+        closeSteam = new JButton();
+        openSteam = new JButton();
         settingsDialog = new JDialog();
         checkBox1 = new JCheckBox();
         saveSettingsButton = new JButton();
@@ -299,7 +333,7 @@ public class MainWindow extends JFrame {
         //======== this ========
         setTitle("Steam Account Manager");
         setResizable(false);
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== menuBar1 ========
@@ -414,6 +448,18 @@ public class MainWindow extends JFrame {
             mainPanel.add(editAccount);
             editAccount.setBounds(5, 110, 160, 35);
 
+            //---- closeSteam ----
+            closeSteam.setText("Close Steam");
+            closeSteam.addActionListener(e -> closeSteamActionPerformed(e));
+            mainPanel.add(closeSteam);
+            closeSteam.setBounds(5, 250, 160, 35);
+
+            //---- openSteam ----
+            openSteam.setText("Open Steam");
+            openSteam.addActionListener(e -> openSteamActionPerformed(e));
+            mainPanel.add(openSteam);
+            openSteam.setBounds(5, 215, 160, 35);
+
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
                 for(int i = 0; i < mainPanel.getComponentCount(); i++) {
@@ -436,7 +482,7 @@ public class MainWindow extends JFrame {
         {
             settingsDialog.setTitle("Settings");
             settingsDialog.setResizable(false);
-            Container settingsDialogContentPane = settingsDialog.getContentPane();
+            var settingsDialogContentPane = settingsDialog.getContentPane();
             settingsDialogContentPane.setLayout(null);
 
             //---- checkBox1 ----
@@ -482,7 +528,7 @@ public class MainWindow extends JFrame {
         {
             debugFrame.setTitle("Debug");
             debugFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-            Container debugFrameContentPane = debugFrame.getContentPane();
+            var debugFrameContentPane = debugFrame.getContentPane();
             debugFrameContentPane.setLayout(null);
 
             //---- causeException ----
@@ -518,7 +564,7 @@ public class MainWindow extends JFrame {
             addAccountDialog.setAlwaysOnTop(true);
             addAccountDialog.setTitle("Add Account");
             addAccountDialog.setResizable(false);
-            Container addAccountDialogContentPane = addAccountDialog.getContentPane();
+            var addAccountDialogContentPane = addAccountDialog.getContentPane();
             addAccountDialogContentPane.setLayout(null);
 
             //---- add ----
@@ -597,7 +643,7 @@ public class MainWindow extends JFrame {
         //======== editAccountDialog ========
         {
             editAccountDialog.setTitle("Edit Account");
-            Container editAccountDialogContentPane = editAccountDialog.getContentPane();
+            var editAccountDialogContentPane = editAccountDialog.getContentPane();
             editAccountDialogContentPane.setLayout(null);
 
             //---- currentAccountName ----
@@ -689,10 +735,11 @@ public class MainWindow extends JFrame {
             editAccountDialog.setLocationRelativeTo(editAccountDialog.getOwner());
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        INSTANCE = this;
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Bubby
+    // Generated using JFormDesigner Evaluation license - AAAA
     private JMenuBar menuBar1;
     private JMenu file;
     private JMenuItem newAccountList;
@@ -711,6 +758,8 @@ public class MainWindow extends JFrame {
     private JButton addAccount;
     private JButton removeAccount;
     private JButton editAccount;
+    private JButton closeSteam;
+    private JButton openSteam;
     private JDialog settingsDialog;
     private JCheckBox checkBox1;
     private JButton saveSettingsButton;
@@ -760,4 +809,5 @@ public class MainWindow extends JFrame {
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     private DefaultTreeModel treeModel;
     private Account selectedAccount;
+    public static MainWindow INSTANCE;
 }
