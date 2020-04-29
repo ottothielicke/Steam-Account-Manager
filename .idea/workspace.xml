@@ -6,21 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c991eb1-1b9e-4fa4-9e63-d3dfdfd0012e" name="Default Changelist" comment="Added 'Add Account' menu">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/AccountHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/AccountHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow.jfd" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Steam Account Manager/MainWindow.jfd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccountHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainWindow.jfd" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWindow.jfd" afterDir="false" />
-    </list>
+    <list default="true" id="5c991eb1-1b9e-4fa4-9e63-d3dfdfd0012e" name="Default Changelist" comment="Added 'Add Account' menu" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,63 +15,6 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Steam Account Manager" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AccountHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="27" column="53" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Configuration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="51" selection-start-line="51" selection-end-line="51" />
-              <folding>
-                <element signature="e#348#349#0" expanded="true" />
-                <element signature="e#370#371#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-313">
-              <caret line="226" column="73" selection-start-line="226" selection-start-column="73" selection-end-line="226" selection-end-column="73" />
-              <folding>
-                <marker date="1561610777723" expanded="false" signature="9676:30762" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-                <marker date="1561610777723" expanded="false" signature="30799:33255" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.desktop/javax/swing/event/ListDataEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="97" column="11" selection-start-line="97" selection-start-column="11" selection-end-line="97" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -104,15 +33,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="205" />
     <option name="y" value="308" />
@@ -120,31 +40,6 @@
     <option name="height" value="999" />
   </component>
   <component name="ProjectId" id="1NAUuZVi4RyG9lkvnUQ8minkW7L" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Steam-Account-Manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Steam-Account-Manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Steam-Account-Manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Steam-Account-Manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
@@ -156,7 +51,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -220,50 +115,12 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.32936078" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32936078" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -295,13 +152,11 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/AccountHandler.java</url>
           <line>129</line>
-          <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/MainWindow.java</url>
           <line>87</line>
-          <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
@@ -319,50 +174,5 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.desktop/javax/swing/event/ListDataEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="97" column="11" selection-start-line="97" selection-start-column="11" selection-end-line="97" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="e#348#349#0" expanded="true" />
-            <element signature="e#370#371#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AccountHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="53" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-313">
-          <caret line="226" column="73" selection-start-line="226" selection-start-column="73" selection-end-line="226" selection-end-column="73" />
-          <folding>
-            <marker date="1561610777723" expanded="false" signature="9676:30762" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1561610777723" expanded="false" signature="30799:33255" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>
